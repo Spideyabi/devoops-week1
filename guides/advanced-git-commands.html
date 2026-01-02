@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Git Commands - GitHub Guides Blog</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/guide.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">GitHub Guides</h1>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#guides">Guides</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="guide-content">
+        <div class="container">
+            <article>
+                <header class="guide-header">
+                    <h1>Advanced Git Commands</h1>
+                    <div class="guide-meta">
+                        <span class="date">January 2, 2026</span>
+                        <span class="reading-time">12 min read</span>
+                    </div>
+                </header>
+
+                <section class="guide-body">
+                    <h2>Introduction</h2>
+                    <p>This guide covers advanced Git commands for branch management, merging, and other powerful operations. Master these commands to become proficient with Git.</p>
+
+                    <h2>Branch Management Commands</h2>
+                    
+                    <h3>Creating Branches</h3>
+                    
+                    <h4>Create a new branch:</h4>
+                    <pre><code>git branch &lt;branch-name&gt;</code></pre>
+                    <p>Creates a new branch but doesn't switch to it.</p>
+
+                    <h4>Create and switch to a new branch:</h4>
+                    <pre><code>git checkout -b &lt;branch-name&gt;</code></pre>
+                    <p>Creates a new branch and immediately switches to it. This is equivalent to running <code>git branch &lt;branch-name&gt;</code> followed by <code>git checkout &lt;branch-name&gt;</code>.</p>
+
+                    <h4>Create a branch from a specific commit:</h4>
+                    <pre><code>git branch &lt;branch-name&gt; &lt;commit-hash&gt;</code></pre>
+                    <p>Creates a new branch starting from a specific commit instead of the current HEAD.</p>
+
+                    <h4>Create a branch and switch using modern syntax:</h4>
+                    <pre><code>git switch -c &lt;branch-name&gt;</code></pre>
+                    <p>The newer, more intuitive command for creating and switching to a new branch (Git 2.23+).</p>
+
+                    <h3>Listing Branches</h3>
+                    
+                    <h4>List all local branches:</h4>
+                    <pre><code>git branch</code></pre>
+                    <p>Shows all local branches with an asterisk (*) next to the current branch.</p>
+
+                    <h4>List all remote branches:</h4>
+                    <pre><code>git branch -r</code></pre>
+                    <p>Displays all branches on the remote repository.</p>
+
+                    <h4>List all branches (local and remote):</h4>
+                    <pre><code>git branch -a</code></pre>
+                    <p>Shows both local and remote branches in one list.</p>
+
+                    <h4>List branches with last commit info:</h4>
+                    <pre><code>git branch -v</code></pre>
+                    <p>Shows branches along with the last commit message and hash for each branch.</p>
+
+                    <h3>Switching Branches</h3>
+                    
+                    <h4>Switch to an existing branch:</h4>
+                    <pre><code>git checkout &lt;branch-name&gt;</code></pre>
+                    <p>Switches to the specified branch.</p>
+
+                    <h4>Switch to a branch (modern syntax):</h4>
+                    <pre><code>git switch &lt;branch-name&gt;</code></pre>
+                    <p>The newer command specifically for switching branches (Git 2.23+).</p>
+
+                    <h4>Switch to the previous branch:</h4>
+                    <pre><code>git checkout -</code></pre>
+                    <p>Quickly switches back to the previously checked out branch.</p>
+
+                    <h3>Deleting Branches</h3>
+                    
+                    <h4>Delete a local branch:</h4>
+                    <pre><code>git branch -d &lt;branch-name&gt;</code></pre>
+                    <p>Safely deletes a branch that has been merged. Git will prevent deletion if there are unmerged changes.</p>
+
+                    <h4>Force delete a local branch:</h4>
+                    <pre><code>git branch -D &lt;branch-name&gt;</code></pre>
+                    <p>Forcefully deletes a branch even if it hasn't been merged. Use with caution!</p>
+
+                    <h4>Delete a remote branch:</h4>
+                    <pre><code>git push origin --delete &lt;branch-name&gt;</code></pre>
+                    <p>Deletes a branch from the remote repository.</p>
+
+                    <h4>Delete multiple branches:</h4>
+                    <pre><code>git branch -d &lt;branch1&gt; &lt;branch2&gt; &lt;branch3&gt;</code></pre>
+                    <p>Deletes multiple local branches in one command.</p>
+
+                    <h3>Renaming Branches</h3>
+                    
+                    <h4>Rename the current branch:</h4>
+                    <pre><code>git branch -m &lt;new-branch-name&gt;</code></pre>
+                    <p>Renames the branch you're currently on.</p>
+
+                    <h4>Rename a different branch:</h4>
+                    <pre><code>git branch -m &lt;old-branch-name&gt; &lt;new-branch-name&gt;</code></pre>
+                    <p>Renames a branch without switching to it.</p>
+
+                    <h2>Merging Commands</h2>
+                    
+                    <h3>Basic Merging</h3>
+                    
+                    <h4>Merge a branch into current branch:</h4>
+                    <pre><code>git merge &lt;branch-name&gt;</code></pre>
+                    <p>Merges the specified branch into your current branch. Creates a merge commit if there are changes.</p>
+
+                    <h4>Fast-forward merge:</h4>
+                    <pre><code>git merge --ff-only &lt;branch-name&gt;</code></pre>
+                    <p>Only performs the merge if it can be fast-forwarded. Fails if a merge commit would be required.</p>
+
+                    <h4>No fast-forward merge:</h4>
+                    <pre><code>git merge --no-ff &lt;branch-name&gt;</code></pre>
+                    <p>Always creates a merge commit, even if the merge could be fast-forwarded. Useful for maintaining branch history.</p>
+
+                    <h4>Merge with custom commit message:</h4>
+                    <pre><code>git merge &lt;branch-name&gt; -m "Your merge message"</code></pre>
+                    <p>Merges the branch and uses your custom message for the merge commit.</p>
+
+                    <h3>Advanced Merging</h3>
+                    
+                    <h4>Squash merge:</h4>
+                    <pre><code>git merge --squash &lt;branch-name&gt;</code></pre>
+                    <p>Combines all commits from the branch into a single commit in your current branch. The changes are staged but not committed, allowing you to review before committing.</p>
+
+                    <h4>Abort a merge:</h4>
+                    <pre><code>git merge --abort</code></pre>
+                    <p>Cancels the merge process and returns to the state before the merge started. Useful when encountering conflicts you want to resolve later.</p>
+
+                    <h4>Continue merge after resolving conflicts:</h4>
+                    <pre><code>git merge --continue</code></pre>
+                    <p>Continues the merge process after you've resolved conflicts and staged the files.</p>
+
+                    <h3>Merge Strategies</h3>
+                    
+                    <h4>Recursive strategy (default):</h4>
+                    <pre><code>git merge -s recursive &lt;branch-name&gt;</code></pre>
+                    <p>The default merge strategy that handles most situations well.</p>
+
+                    <h4>Ours strategy:</h4>
+                    <pre><code>git merge -s ours &lt;branch-name&gt;</code></pre>
+                    <p>Resolves all conflicts by favoring the current branch's version.</p>
+
+                    <h4>Theirs strategy (using recursive):</h4>
+                    <pre><code>git merge -X theirs &lt;branch-name&gt;</code></pre>
+                    <p>When conflicts occur, automatically favor the incoming branch's changes.</p>
+
+                    <h2>Rebasing Commands</h2>
+                    
+                    <h3>Basic Rebasing</h3>
+                    
+                    <h4>Rebase current branch onto another:</h4>
+                    <pre><code>git rebase &lt;branch-name&gt;</code></pre>
+                    <p>Moves your current branch's commits to start from the tip of the specified branch, creating a linear history.</p>
+
+                    <h4>Interactive rebase:</h4>
+                    <pre><code>git rebase -i &lt;commit-hash&gt;</code></pre>
+                    <p>Opens an interactive editor allowing you to reorder, squash, edit, or drop commits.</p>
+
+                    <h4>Rebase last N commits:</h4>
+                    <pre><code>git rebase -i HEAD~&lt;N&gt;</code></pre>
+                    <p>Interactively rebase the last N commits. For example, <code>HEAD~3</code> for the last 3 commits.</p>
+
+                    <h4>Abort a rebase:</h4>
+                    <pre><code>git rebase --abort</code></pre>
+                    <p>Cancels the rebase operation and returns to the state before rebasing started.</p>
+
+                    <h4>Continue after resolving conflicts:</h4>
+                    <pre><code>git rebase --continue</code></pre>
+                    <p>Continues the rebase after you've resolved conflicts and staged the files.</p>
+
+                    <h4>Skip a commit during rebase:</h4>
+                    <pre><code>git rebase --skip</code></pre>
+                    <p>Skips the current commit and continues with the rebase.</p>
+
+                    <h2>Cherry-Pick Commands</h2>
+                    
+                    <h4>Apply a specific commit to current branch:</h4>
+                    <pre><code>git cherry-pick &lt;commit-hash&gt;</code></pre>
+                    <p>Applies the changes from a specific commit to your current branch.</p>
+
+                    <h4>Cherry-pick multiple commits:</h4>
+                    <pre><code>git cherry-pick &lt;commit1&gt; &lt;commit2&gt; &lt;commit3&gt;</code></pre>
+                    <p>Applies multiple commits in sequence.</p>
+
+                    <h4>Cherry-pick a range of commits:</h4>
+                    <pre><code>git cherry-pick &lt;start-commit&gt;..&lt;end-commit&gt;</code></pre>
+                    <p>Applies all commits in the specified range.</p>
+
+                    <h4>Cherry-pick without committing:</h4>
+                    <pre><code>git cherry-pick --no-commit &lt;commit-hash&gt;</code></pre>
+                    <p>Applies the changes but doesn't automatically commit them, allowing you to review or modify.</p>
+
+                    <h2>Stash Commands</h2>
+                    
+                    <h4>Stash current changes:</h4>
+                    <pre><code>git stash</code></pre>
+                    <p>Saves your uncommitted changes and reverts the working directory to match HEAD.</p>
+
+                    <h4>Stash with a message:</h4>
+                    <pre><code>git stash save "Your message here"</code></pre>
+                    <p>Saves the stash with a descriptive message for easier identification.</p>
+
+                    <h4>List all stashes:</h4>
+                    <pre><code>git stash list</code></pre>
+                    <p>Shows all saved stashes with their identifiers and messages.</p>
+
+                    <h4>Apply the most recent stash:</h4>
+                    <pre><code>git stash apply</code></pre>
+                    <p>Applies the most recent stash but keeps it in the stash list.</p>
+
+                    <h4>Apply and remove the most recent stash:</h4>
+                    <pre><code>git stash pop</code></pre>
+                    <p>Applies the most recent stash and removes it from the stash list.</p>
+
+                    <h4>Apply a specific stash:</h4>
+                    <pre><code>git stash apply stash@{n}</code></pre>
+                    <p>Applies a specific stash by its index number.</p>
+
+                    <h4>Delete a specific stash:</h4>
+                    <pre><code>git stash drop stash@{n}</code></pre>
+                    <p>Removes a specific stash from the stash list.</p>
+
+                    <h4>Clear all stashes:</h4>
+                    <pre><code>git stash clear</code></pre>
+                    <p>Deletes all saved stashes. Use with caution!</p>
+
+                    <h2>Remote Branch Operations</h2>
+                    
+                    <h4>Fetch remote branches:</h4>
+                    <pre><code>git fetch origin</code></pre>
+                    <p>Downloads all branches and commits from the remote repository without merging.</p>
+
+                    <h4>Track a remote branch:</h4>
+                    <pre><code>git checkout --track origin/&lt;branch-name&gt;</code></pre>
+                    <p>Creates a local branch that tracks a remote branch.</p>
+
+                    <h4>Push local branch to remote:</h4>
+                    <pre><code>git push -u origin &lt;branch-name&gt;</code></pre>
+                    <p>Pushes your local branch to the remote repository and sets up tracking.</p>
+
+                    <h4>Pull with rebase:</h4>
+                    <pre><code>git pull --rebase</code></pre>
+                    <p>Fetches changes and rebases your local commits on top of them instead of merging.</p>
+
+                    <h4>Set upstream for current branch:</h4>
+                    <pre><code>git branch --set-upstream-to=origin/&lt;branch-name&gt;</code></pre>
+                    <p>Configures the current branch to track a specific remote branch.</p>
+
+                    <h2>Viewing Branch Information</h2>
+                    
+                    <h4>Show branches merged into current branch:</h4>
+                    <pre><code>git branch --merged</code></pre>
+                    <p>Lists all branches that have been merged into the current branch.</p>
+
+                    <h4>Show branches not yet merged:</h4>
+                    <pre><code>git branch --no-merged</code></pre>
+                    <p>Lists branches that have changes not yet merged into the current branch.</p>
+
+                    <h4>Compare two branches:</h4>
+                    <pre><code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code></pre>
+                    <p>Shows the differences between two branches.</p>
+
+                    <h4>Show commits in branch1 but not in branch2:</h4>
+                    <pre><code>git log &lt;branch2&gt;..&lt;branch1&gt;</code></pre>
+                    <p>Displays commits that exist in branch1 but not in branch2.</p>
+
+                    <h4>Show branch structure:</h4>
+                    <pre><code>git log --graph --oneline --all</code></pre>
+                    <p>Visualizes the branch structure and commit history in a graph format.</p>
+
+                    <h2>Advanced Tips</h2>
+                    
+                    <blockquote>
+                        <p><strong>Pro Tip:</strong> Use <code>git branch -vv</code> to see which local branches are tracking remote branches.</p>
+                    </blockquote>
+
+                    <blockquote>
+                        <p><strong>Best Practice:</strong> Always pull or fetch before merging to ensure you have the latest changes from the remote repository.</p>
+                    </blockquote>
+
+                    <blockquote>
+                        <p><strong>Warning:</strong> Force pushing (<code>git push --force</code>) can overwrite remote history. Only use it when you're certain it won't affect other team members.</p>
+                    </blockquote>
+
+                    <h2>Common Workflows</h2>
+                    
+                    <h3>Feature Branch Workflow:</h3>
+                    <pre><code># Create and switch to feature branch
+git checkout -b feature/new-feature
+
+# Make changes and commit
+git add .
+git commit -m "Add new feature"
+
+# Push to remote
+git push -u origin feature/new-feature
+
+# Merge into main
+git checkout main
+git pull origin main
+git merge --no-ff feature/new-feature
+git push origin main
+
+# Delete feature branch
+git branch -d feature/new-feature
+git push origin --delete feature/new-feature</code></pre>
+
+                    <h3>Updating Feature Branch from Main:</h3>
+                    <pre><code># While on feature branch
+git fetch origin
+git rebase origin/main
+
+# Or using merge
+git merge origin/main</code></pre>
+
+                    <h2>Conclusion</h2>
+                    <p>Mastering these Git commands will significantly improve your workflow and collaboration capabilities. Practice these commands regularly to become proficient with branch management and merging operations.</p>
+                </section>
+
+                <footer class="guide-footer">
+                    <a href="../index.html" class="btn">Back to Home</a>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GitHub Guides Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
