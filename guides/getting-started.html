@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with GitHub - GitHub Guides Blog</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/guide.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">GitHub Guides</h1>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#guides">Guides</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="guide-content">
+        <div class="container">
+            <article>
+                <header class="guide-header">
+                    <h1>Getting Started with GitHub</h1>
+                    <div class="guide-meta">
+                        <span class="date">January 2, 2026</span>
+                        <span class="reading-time">5 min read</span>
+                    </div>
+                </header>
+
+                <section class="guide-body">
+                    <h2>Introduction</h2>
+                    <p>GitHub is a powerful platform for version control and collaboration. This guide will help you get started with the basics of using GitHub.</p>
+
+                    <h2>Creating Your First Repository</h2>
+                    <p>A repository is like a project folder. It contains all of your project's files and each file's revision history.</p>
+                    
+                    <h3>Steps to Create a Repository:</h3>
+                    <ol>
+                        <li>Click the <strong>+</strong> icon in the top right corner</li>
+                        <li>Select <strong>New repository</strong></li>
+                        <li>Name your repository</li>
+                        <li>Add a description (optional)</li>
+                        <li>Choose visibility (public or private)</li>
+                        <li>Initialize with a README (recommended)</li>
+                        <li>Click <strong>Create repository</strong></li>
+                    </ol>
+
+                    <h2>Making Your First Commit</h2>
+                    <p>A commit is like a snapshot of your project at a specific point in time. Here's how to make your first commit:</p>
+                    
+                    <pre><code>git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/yourrepo.git
+git push -u origin main</code></pre>
+
+                    <h2>Understanding Branches</h2>
+                    <p>Branches allow you to work on different versions of your project simultaneously. The default branch is called <code>main</code>.</p>
+
+                    <blockquote>
+                        <p>Pro Tip: Always create a new branch when working on a new feature. This keeps your main branch stable.</p>
+                    </blockquote>
+
+                    <h2>Next Steps</h2>
+                    <p>Now that you've created your first repository and made your first commit, you're ready to explore more advanced features like:</p>
+                    <ul>
+                        <li>Pull requests</li>
+                        <li>Issues</li>
+                        <li>GitHub Actions</li>
+                        <li>Collaboration with others</li>
+                    </ul>
+
+                    <p>Check out our other guides to learn more about these features!</p>
+                </section>
+
+                <footer class="guide-footer">
+                    <a href="../index.html" class="btn">Back to Home</a>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GitHub Guides Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

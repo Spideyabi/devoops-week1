@@ -1,0 +1,127 @@
+/* Guide Page Styles */
+
+.guide-content {
+    padding: 3rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+.guide-header {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e1e4e8;
+    margin-bottom: 3rem;
+}
+
+.guide-header h1 {
+    font-size: 2.5rem;
+    color: #24292e;
+    margin-bottom: 1rem;
+}
+
+.guide-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #586069;
+    font-size: 0.9rem;
+}
+
+.guide-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.guide-body {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.guide-body h2 {
+    font-size: 1.8rem;
+    color: #24292e;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+.guide-body h3 {
+    font-size: 1.4rem;
+    color: #24292e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.guide-body p {
+    margin-bottom: 1.5rem;
+    color: #24292e;
+}
+
+.guide-body code {
+    background-color: #f6f8fa;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.guide-body pre {
+    background-color: #f6f8fa;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.guide-body pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.guide-body ul,
+.guide-body ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.guide-body li {
+    margin-bottom: 0.5rem;
+}
+
+.guide-body blockquote {
+    border-left: 4px solid #0366d6;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #586069;
+    font-style: italic;
+}
+
+.guide-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+}
+
+.guide-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e1e4e8;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .guide-header h1 {
+        font-size: 2rem;
+    }
+
+    .guide-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .guide-body {
+        padding: 0 1rem;
+    }
+}

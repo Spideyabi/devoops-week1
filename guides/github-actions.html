@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Actions Guide - GitHub Guides Blog</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/guide.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">GitHub Guides</h1>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#guides">Guides</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="guide-content">
+        <div class="container">
+            <article>
+                <header class="guide-header">
+                    <h1>GitHub Actions Guide</h1>
+                    <div class="guide-meta">
+                        <span class="date">January 2, 2026</span>
+                        <span class="reading-time">8 min read</span>
+                    </div>
+                </header>
+
+                <section class="guide-body">
+                    <h2>Introduction to GitHub Actions</h2>
+                    <p>GitHub Actions is a powerful automation platform that allows you to create custom workflows for your software development lifecycle.</p>
+
+                    <h2>What are Workflows?</h2>
+                    <p>Workflows are automated processes that you set up in your repository. They can be triggered by events such as pushes, pull requests, or on a schedule.</p>
+
+                    <h2>Creating Your First Workflow</h2>
+                    <p>To create a workflow, you need to add a YAML file in the <code>.github/workflows</code> directory of your repository.</p>
+
+                    <h3>Basic Workflow Example:</h3>
+                    <pre><code>name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run tests
+      run: npm test</code></pre>
+
+                    <h2>Understanding Workflow Components</h2>
+                    
+                    <h3>Events</h3>
+                    <p>Events trigger your workflow. Common events include:</p>
+                    <ul>
+                        <li><code>push</code> - When code is pushed to the repository</li>
+                        <li><code>pull_request</code> - When a pull request is opened or updated</li>
+                        <li><code>schedule</code> - Run workflows on a schedule using cron syntax</li>
+                        <li><code>workflow_dispatch</code> - Manually trigger workflows</li>
+                    </ul>
+
+                    <h3>Jobs</h3>
+                    <p>Jobs are a set of steps that run on the same runner. By default, jobs run in parallel.</p>
+
+                    <h3>Steps</h3>
+                    <p>Steps are individual tasks that run commands or actions. They run sequentially within a job.</p>
+
+                    <h2>Common Use Cases</h2>
+                    <ul>
+                        <li>Continuous Integration (CI) - Automatically test your code</li>
+                        <li>Continuous Deployment (CD) - Automatically deploy your application</li>
+                        <li>Code quality checks - Run linters and formatters</li>
+                        <li>Automated releases - Create releases when you tag commits</li>
+                    </ul>
+
+                    <blockquote>
+                        <p>GitHub Actions gives you 2,000 free minutes per month for private repositories!</p>
+                    </blockquote>
+
+                    <h2>Best Practices</h2>
+                    <ol>
+                        <li>Keep workflows simple and focused</li>
+                        <li>Use caching to speed up workflows</li>
+                        <li>Store secrets securely using GitHub Secrets</li>
+                        <li>Use matrix builds to test across multiple versions</li>
+                        <li>Monitor workflow execution times</li>
+                    </ol>
+                </section>
+
+                <footer class="guide-footer">
+                    <a href="../index.html" class="btn">Back to Home</a>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GitHub Guides Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
